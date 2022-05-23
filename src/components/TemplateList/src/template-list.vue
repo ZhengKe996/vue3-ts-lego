@@ -24,8 +24,8 @@
             </a-card-meta>
           </a-card>
           <div class="tag-list">
-            <a-tag color="red" v-if="item.isHot"> HOT </a-tag>
-            <a-tag color="green" v-if="item.isNew"> NEW </a-tag>
+            <!-- <a-tag color="red" v-if="item.isHot"> HOT </a-tag> -->
+            <!-- <a-tag color="green" v-if="item.isNew"> NEW </a-tag> -->
           </div>
         </router-link>
       </a-col>
@@ -35,7 +35,8 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-const props = defineProps<{ list: any[] }>();
+import { TemplateProps } from "@/store";
+const props = defineProps<{ list: TemplateProps[] }>();
 </script>
 
 <style>

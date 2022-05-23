@@ -17,7 +17,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import("@/views/Home"),
       },
       {
-        path: "/\template/:id",
+        path: "/template/:id",
         name: "template",
         component: () => import("@/views/TemplateDetail"),
       },
@@ -28,6 +28,7 @@ const routes: RouteRecordRaw[] = [
     path: "/editor",
     name: "editor",
     component: () => import("@/views/Editor"),
+    children: [],
   },
 ];
 

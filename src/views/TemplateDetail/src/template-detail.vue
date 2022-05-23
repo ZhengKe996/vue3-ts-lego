@@ -1,21 +1,21 @@
 <template>
   <div class="work-detail-container">
-    <pre>{{ route }}</pre>
-    <a-row type="flex" justify="center">
+    <a-row type="flex" justify="center" v-if="template">
       <a-col :span="8" class="cover-img">
-        <a href=""
-          ><img
+        <a href="">
+          <img
             src="http://typescript-vue.oss-cn-beijing.aliyuncs.com/vue-marker/5f81cca3f3bf7a0e1ebaf885.png"
             alt=""
             id="cover-img"
-        /></a>
+          />
+        </a>
       </a-col>
       <a-col :span="8">
-        <h2>{{}}</h2>
-        <p>{{}}</p>
+        <h2>{{ template.title }}</h2>
+        <!-- <p>{{ template.desc }}</p> -->
         <div class="author">
           <a-avatar>V</a-avatar>
-          该模版由 <b>{{}}</b> 创作
+          该模版由 <b>{{ template.author }}</b> 创作
         </div>
         <div class="bar-code-area">
           <span>扫一扫，手机预览</span>
@@ -33,8 +33,17 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+import { useStore } from "vuex";
 import { useRoute } from "vue-router";
+import { TemplateProps } from "@/store";
+const store = useStore();
 const route = useRoute();
+const currentId = route.params.id as string;
+
+const template = computed<TemplateProps>(() =>
+  store.getters.getTemplateById(parseInt(currentId))
+);
 
 const download = () => {
   console.log("download");
