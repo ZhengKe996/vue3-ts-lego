@@ -36,6 +36,7 @@
           <props-table
             v-if="currentElement && currentElement.props"
             :props="currentElement.props"
+            @change="handleChange"
           ></props-table>
           <pre>{{ currentElement && currentElement.props }}</pre>
         </a-layout-sider>
@@ -65,6 +66,10 @@ const addItem = (props: any) => {
 };
 const setActice = (id: string) => {
   store.commit("setActice", id);
+};
+
+const handleChange = (e: any) => {
+  store.commit("updateComponent", e);
 };
 </script>
 

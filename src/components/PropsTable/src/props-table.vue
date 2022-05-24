@@ -6,8 +6,9 @@
         <component
           v-if="value"
           :is="value.component"
-          :value="value.value"
+          :[value.valueProp]="value.value"
           v-bind="value.extraProps"
+          v-on="value.events"
         >
           <template v-if="value.options">
             <component
@@ -27,22 +28,55 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { reduce } from "lodash-es";
-import { PropsToForms, mapPropsToForms } from "@/propsMap";
+import { mapPropsToForms } from "@/propsMap";
 import { TextComponentProps } from "@/defaultProps";
 
+export interface FormProps {
+  component: string;
+  subComponent?: string;
+  value: string;
+  extraProps?: { [key: string]: any };
+  text?: string;
+  options?: { text: string; value: any }[];
+  valueProp: string;
+  eventName: string;
+  events: { [key: string]: (e: any) => void };
+}
 const props = defineProps<{ props: Readonly<Partial<TextComponentProps>> }>();
+const emits = defineEmits(["change"]);
+
 const finalProps = computed(() => {
   return reduce(
     props.props,
     (result, value, key) => {
       const item = mapPropsToForms[key as keyof TextComponentProps];
       if (item) {
-        item.value = item.initalTransform ? item.initalTransform(value) : value;
-        result[key as keyof TextComponentProps] = item;
+        const {
+          valueProp = "value",
+          eventName = "change",
+          initalTransform,
+          afterTransform,
+        } = item;
+
+        const newItem: FormProps = {
+          ...item,
+          value: initalTransform ? initalTransform(value) : value,
+          valueProp,
+          eventName,
+          events: {
+            [eventName]: (e: any) => {
+              emits("change", {
+                key,
+                value: afterTransform ? afterTransform(e) : e,
+              });
+            },
+          },
+        };
+        result[key as keyof TextComponentProps] = newItem;
       }
       return result;
     },
-    {} as Required<PropsToForms>
+    {} as { [key: string]: FormProps }
   );
 });
 </script>
