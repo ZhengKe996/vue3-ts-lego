@@ -2,7 +2,7 @@
   <div>
     <div class="editor" id="editor-layout-main">
       <a-layout>
-        <a-layout-sider width="300" :style="{ background: 'yellow' }">
+        <a-layout-sider width="300" :style="{ background: '#fff' }">
           <div class="sidebar-container">
             组件列表
             <components-list
@@ -15,21 +15,29 @@
           <a-layout-content class="preview-container">
             <p>画布区域</p>
             <div class="preview-list" id="canvas-area">
-              <l-text
+              <edit-wrapper
                 v-for="component in components"
                 :key="component.id"
-                :is="component.name"
-                v-bind="component.props"
-              />
+                :id="component.id"
+                :active="component.id === (currentElement && currentElement.id)"
+                @set-active="setActice"
+              >
+                <l-text :is="component.name" v-bind="component.props" />
+              </edit-wrapper>
             </div>
           </a-layout-content>
         </a-layout>
         <a-layout-sider
           width="300"
-          :style="{ background: 'purple' }"
+          :style="{ background: '#fff' }"
           class="setting"
         >
-          <div class="sidebar-container">组件列表</div>
+          组件属性
+          <props-table
+            v-if="currentElement && currentElement.props"
+            :props="currentElement.props"
+          ></props-table>
+          <pre>{{ currentElement && currentElement.props }}</pre>
         </a-layout-sider>
       </a-layout>
     </div>
@@ -42,15 +50,25 @@ import { useStore } from "vuex";
 import { GlobalDataProps } from "@/store";
 import LText from "@/components/LText";
 import ComponentsList from "@/components/ComponentsList";
+import EditWrapper from "@/components/EditWrapper";
+import PropsTable from "@/components/PropsTable";
 import { defaultTextTemplates } from "@/defaultTemplates";
+import { ComponentData } from "@/store/editor";
+
 const store = useStore<GlobalDataProps>();
 const components = computed(() => store.state.editor.components);
+const currentElement = computed<ComponentData | null>(
+  () => store.getters.getCurrentElement
+);
 const addItem = (props: any) => {
   store.commit("addComponent", props);
 };
+const setActice = (id: string) => {
+  store.commit("setActice", id);
+};
 </script>
 
-<style>
+<style scoped>
 .editor-container .preview-container {
   padding: 24px;
   margin: 0;

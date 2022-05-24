@@ -18,12 +18,26 @@ export const testComponents: ComponentData[] = [
   {
     id: uuidv4(),
     name: "l-text",
-    props: { text: "hello1", fontSize: "20px", color: "#f00" },
+    props: {
+      text: "hello1",
+      fontSize: "20px",
+      color: "#f00",
+      lineHeight: "1",
+      textAlign: "left",
+      fontFamily: "",
+    },
   },
   {
     id: uuidv4(),
     name: "l-text",
-    props: { text: "hello2", fontSize: "10px", color: "#0f0" },
+    props: {
+      text: "hello2",
+      fontSize: "10px",
+      color: "#0f0",
+      lineHeight: "2",
+      textAlign: "center",
+      fontFamily: "",
+    },
   },
   {
     id: uuidv4(),
@@ -32,8 +46,6 @@ export const testComponents: ComponentData[] = [
       text: "hello3",
       fontSize: "15px",
       color: "#00f",
-      actionType: "url",
-      url: "https//:www.baidu.com",
     },
   },
 ];
@@ -52,6 +64,15 @@ const editor: Module<EditorProps, GlobalDataProps> = {
       };
       state.components.push(newComponent);
     },
+    setActice(state, currentId: string) {
+      state.currentElement = currentId;
+    },
+  },
+  getters: {
+    getCurrentElement: (state) =>
+      state.components.find(
+        (component) => component.id === state.currentElement
+      ),
   },
 };
 

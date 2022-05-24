@@ -12,7 +12,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits } from "vue";
 import LText from "@/components/LText";
 import { TextComponentProps } from "@/defaultProps";
 const props = defineProps<{ list: any[] }>();
