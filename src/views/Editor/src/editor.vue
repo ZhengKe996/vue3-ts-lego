@@ -8,7 +8,14 @@
         <a-layout :style="{ padding: '0 24px 24px' }">
           <a-layout-content class="preview-container">
             <p>画布区域</p>
-            <div class="preview-list" id="canvas-area"></div>
+            <div class="preview-list" id="canvas-area">
+              <l-text
+                v-for="component in components"
+                :key="component.id"
+                :is="component.name"
+                v-bind="component.props"
+              />
+            </div>
           </a-layout-content>
         </a-layout>
         <a-layout-sider
@@ -23,7 +30,16 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from "vue";
+import { useStore } from "vuex";
+import { GlobalDataProps } from "@/store";
+import LText from "@/components/LText";
+
+const store = useStore<GlobalDataProps>();
+
+const components = computed(() => store.state.editor.components);
+</script>
 
 <style>
 .editor-container .preview-container {
