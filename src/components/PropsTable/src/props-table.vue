@@ -16,8 +16,9 @@
               v-for="(option, k) in value.options"
               :key="k"
               :value="option.value"
-              >{{ option.text }}</component
             >
+              <render-vnode :vNode="option.text"></render-vnode>
+            </component>
           </template>
         </component>
       </div>
@@ -30,6 +31,7 @@ import { computed, VNode } from "vue";
 import { reduce } from "lodash-es";
 import { mapPropsToForms } from "@/propsMap";
 import { TextComponentProps } from "@/defaultProps";
+import RenderVnode from "./RenderVnode";
 
 export interface FormProps {
   component: string;
