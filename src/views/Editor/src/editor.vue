@@ -33,11 +33,11 @@
           class="setting"
         >
           组件属性
-          <props-table
+          <props-table-t-s-x
             v-if="currentElement && currentElement.props"
             :props="currentElement.props"
             @change="handleChange"
-          ></props-table>
+          ></props-table-t-s-x>
           <pre>{{ currentElement && currentElement.props }}</pre>
         </a-layout-sider>
       </a-layout>
@@ -52,7 +52,7 @@ import { GlobalDataProps } from "@/store";
 import LText from "@/components/LText";
 import ComponentsList from "@/components/ComponentsList";
 import EditWrapper from "@/components/EditWrapper";
-import PropsTable from "@/components/PropsTable";
+import { PropsTable, PropsTableTSX } from "@/components/PropsTable";
 import { defaultTextTemplates } from "@/defaultTemplates";
 import { ComponentData } from "@/store/editor";
 
