@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { TemplateProps } from "@/store";
+import { TemplateProps } from "@/store/templates";
 const props = defineProps<{ list: TemplateProps[] }>();
 </script>
 

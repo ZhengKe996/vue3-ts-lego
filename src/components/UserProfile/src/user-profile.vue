@@ -30,7 +30,7 @@ import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { message } from "ant-design-vue";
 
-import { UserProps } from "@/store";
+import { UserProps } from "@/store/user";
 const store = useStore();
 const router = useRouter();
 const props = defineProps<{ user: UserProps }>();

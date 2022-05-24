@@ -10,7 +10,7 @@ import { useStore } from "vuex";
 import TemplateList from "@/components/TemplateList";
 import { GlobalDataProps } from "@/store";
 const store = useStore<GlobalDataProps>();
-const testData = computed(() => store.state.templates);
+const testData = computed(() => store.state.templates.data);
 </script>
 
 <style scoped>
