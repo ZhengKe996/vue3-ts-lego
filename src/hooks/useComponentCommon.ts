@@ -1,8 +1,9 @@
 import { computed } from "vue";
 import { pick } from "lodash-es";
+import { TextComponentProps } from "@/defaultProps";
 
-export const useComponentCommon = <T extends { [key: string]: any }>(
-  props: T,
+export const useComponentCommon = (
+  props: Readonly<Partial<TextComponentProps>>,
   picks: string[]
 ) => {
   const styleProps = computed(() => pick(props, picks));

@@ -3,7 +3,13 @@
     <div class="editor" id="editor-layout-main">
       <a-layout>
         <a-layout-sider width="300" :style="{ background: 'yellow' }">
-          <div class="sidebar-container">组件列表</div>
+          <div class="sidebar-container">
+            组件列表
+            <components-list
+              :list="defaultTextTemplates"
+              @on-item-click="addItem"
+            />
+          </div>
         </a-layout-sider>
         <a-layout :style="{ padding: '0 24px 24px' }">
           <a-layout-content class="preview-container">
@@ -35,10 +41,13 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 import { GlobalDataProps } from "@/store";
 import LText from "@/components/LText";
-
+import ComponentsList from "@/components/ComponentsList";
+import { defaultTextTemplates } from "@/defaultTemplates";
 const store = useStore<GlobalDataProps>();
-
 const components = computed(() => store.state.editor.components);
+const addItem = (props: any) => {
+  store.commit("addComponent", props);
+};
 </script>
 
 <style>

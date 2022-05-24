@@ -36,6 +36,7 @@ export interface TextComponentProps extends CommonComponentProps {
   color: string;
   backgroundColor: string;
 }
+
 export const commonDefaultProps: CommonComponentProps = {
   // actions
   actionType: "",
@@ -61,6 +62,7 @@ export const commonDefaultProps: CommonComponentProps = {
   top: "0",
   right: "0",
 };
+
 export const textDefaultProps: TextComponentProps = {
   // basic props - font styles
   text: "正文内容",
@@ -75,6 +77,7 @@ export const textDefaultProps: TextComponentProps = {
   backgroundColor: "",
   ...commonDefaultProps,
 };
+
 export const textStylePropNames = without(
   Object.keys(textDefaultProps),
   "actionType",
