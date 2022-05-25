@@ -3,24 +3,32 @@
     <div v-for="(value, key) in finalProps" :key="key" class="prop-item">
       <span class="label" v-if="value?.text">{{ value.text }}</span>
       <div class="prop-component">
-        <component
-          v-if="value"
-          :is="value.component"
-          :[value.valueProp]="value.value"
-          v-bind="value.extraProps"
-          v-on="value.events"
-        >
-          <template v-if="value.options">
-            <component
-              :is="value.subComponent"
-              v-for="(option, k) in value.options"
-              :key="k"
-              :value="option.value"
-            >
-              <render-vnode :vNode="option.text"></render-vnode>
-            </component>
-          </template>
-        </component>
+        <keep-alive>
+          <color-picker
+            v-if="value.component === 'color-picker'"
+            :[value.valueProp]="value.value"
+            v-bind="value.extraProps"
+            v-on="value.events"
+          />
+          <component
+            v-else-if="value"
+            :is="value.component"
+            :[value.valueProp]="value.value"
+            v-bind="value.extraProps"
+            v-on="value.events"
+          >
+            <template v-if="value.options">
+              <component
+                :is="value.subComponent"
+                v-for="(option, k) in value.options"
+                :key="k"
+                :value="option.value"
+              >
+                <render-vnode :vNode="option.text"></render-vnode>
+              </component>
+            </template>
+          </component>
+        </keep-alive>
       </div>
     </div>
   </div>
@@ -32,6 +40,7 @@ import { reduce } from "lodash-es";
 import { mapPropsToForms } from "@/propsMap";
 import { TextComponentProps } from "@/defaultProps";
 import RenderVnode from "./RenderVnode";
+import ColorPicker from "@/components/ColorPicker/color-picker.vue";
 
 export interface FormProps {
   component: string;

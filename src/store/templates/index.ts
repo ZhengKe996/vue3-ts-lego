@@ -12,7 +12,7 @@ const testData: TemplateProps[] = [
     id: 1,
     title: "哈哈哈1",
     coverImg:
-      "http://typescript-vue.oss-cn-beijing.aliyuncs.com/vue-marker/5f81cca3f3bf7a0e1ebaf885.png",
+      "https://zhengke-img.oss-cn-hangzhou.aliyuncs.com/TYG/map/main.jpg",
     author: "张三1",
     copiedCount: 100,
   },
@@ -20,7 +20,7 @@ const testData: TemplateProps[] = [
     id: 2,
     title: "哈哈哈2",
     coverImg:
-      "http://typescript-vue.oss-cn-beijing.aliyuncs.com/vue-marker/5f81cca3f3bf7a0e1ebaf885.png",
+      "https://zhengke-img.oss-cn-hangzhou.aliyuncs.com/TYG/map/main.jpg",
     author: "张三2",
     copiedCount: 100,
   },
@@ -28,7 +28,7 @@ const testData: TemplateProps[] = [
     id: 3,
     title: "哈哈哈3",
     coverImg:
-      "http://typescript-vue.oss-cn-beijing.aliyuncs.com/vue-marker/5f81cca3f3bf7a0e1ebaf885.png",
+      "https://zhengke-img.oss-cn-hangzhou.aliyuncs.com/TYG/map/main.jpg",
     author: "张三3",
     copiedCount: 100,
   },
@@ -36,7 +36,7 @@ const testData: TemplateProps[] = [
     id: 4,
     title: "哈哈哈4",
     coverImg:
-      "http://typescript-vue.oss-cn-beijing.aliyuncs.com/vue-marker/5f81cca3f3bf7a0e1ebaf885.png",
+      "https://zhengke-img.oss-cn-hangzhou.aliyuncs.com/TYG/map/main.jpg",
     author: "张三4",
     copiedCount: 100,
   },
@@ -44,7 +44,7 @@ const testData: TemplateProps[] = [
     id: 5,
     title: "哈哈哈5",
     coverImg:
-      "http://typescript-vue.oss-cn-beijing.aliyuncs.com/vue-marker/5f81cca3f3bf7a0e1ebaf885.png",
+      "https://zhengke-img.oss-cn-hangzhou.aliyuncs.com/TYG/map/main.jpg",
     author: "张三5",
     copiedCount: 100,
   },
@@ -52,7 +52,7 @@ const testData: TemplateProps[] = [
     id: 6,
     title: "哈哈哈6",
     coverImg:
-      "http://typescript-vue.oss-cn-beijing.aliyuncs.com/vue-marker/5f81cca3f3bf7a0e1ebaf885.png",
+      "https://zhengke-img.oss-cn-hangzhou.aliyuncs.com/TYG/map/main.jpg",
     author: "张三6",
     copiedCount: 100,
   },
@@ -60,7 +60,7 @@ const testData: TemplateProps[] = [
     id: 7,
     title: "哈哈哈7",
     coverImg:
-      "http://typescript-vue.oss-cn-beijing.aliyuncs.com/vue-marker/5f81cca3f3bf7a0e1ebaf885.png",
+      "https://zhengke-img.oss-cn-hangzhou.aliyuncs.com/TYG/map/main.jpg",
     author: "张三7",
     copiedCount: 100,
   },
@@ -68,7 +68,7 @@ const testData: TemplateProps[] = [
     id: 8,
     title: "哈哈哈7",
     coverImg:
-      "http://typescript-vue.oss-cn-beijing.aliyuncs.com/vue-marker/5f81cca3f3bf7a0e1ebaf885.png",
+      "https://zhengke-img.oss-cn-hangzhou.aliyuncs.com/TYG/map/main.jpg",
     author: "张三7",
     copiedCount: 100,
   },

@@ -54,9 +54,4 @@ describe("mount component", () => {
     expect(wrapper.get(".user-profile-component").html()).toContain("viking");
     expect(wrapper.find(".user-profile-dropdown").exists()).toBeTruthy();
   });
-
-  test("should call logout and show message, call router.push after timeout", async () => {
-    await wrapper.get(".user-profile-dropdown div").trigger("click");
-    expect(mockedRoutes).toEqual([]);
-  });
 });
