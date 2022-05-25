@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
 import { GlobalDataProps } from "@/store";
 import UserProfile from "@/components/UserProfile";
