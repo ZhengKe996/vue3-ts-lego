@@ -40,7 +40,7 @@ import { reduce } from "lodash-es";
 import { mapPropsToForms } from "@/propsMap";
 import { TextComponentProps } from "@/defaultProps";
 import RenderVnode from "./RenderVnode";
-import ColorPicker from "@/components/ColorPicker/color-picker.vue";
+import ColorPicker from "@/components/ColorPicker";
 
 export interface FormProps {
   component: string;
