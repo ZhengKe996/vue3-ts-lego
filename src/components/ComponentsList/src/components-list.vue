@@ -17,10 +17,11 @@
 import LText from "@/components/LText";
 import { imageDefaultProps, TextComponentProps } from "@/defaultProps";
 import { v4 as uuidv4 } from "uuid";
+import { message } from "ant-design-vue";
 import { ComponentData } from "@/store/editor";
 import StyledUploader from "@/components/StyledUploader";
 import { UploadResp } from "@/extraType";
-import { message } from "ant-design-vue";
+import { getImageDimensions } from "@/helper";
 
 const props = defineProps<{ list: any[] }>();
 
@@ -47,7 +48,12 @@ const onImageUploaded = (resp?: UploadResp) => {
   // componentData.props.src = resp.data.url;
   componentData.props.src =
     "http://typescript-vue.oss-cn-beijing.aliyuncs.com/vue-marker/5f81cca3f3bf7a0e1ebaf885.png";
-  emit("on-item-click", componentData);
+
+  getImageDimensions(componentData.props.src).then(({ width }) => {
+    const maxWidth = 373;
+    componentData.props.width = (width > maxWidth ? maxWidth : width) + "px";
+    emit("on-item-click", componentData);
+  });
 };
 </script>
 
