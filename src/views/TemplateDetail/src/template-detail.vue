@@ -40,7 +40,7 @@ import { TemplateProps } from "@/store/templates";
 const store = useStore();
 const route = useRoute();
 const currentId = route.params.id as string;
-console.log(currentId);
+
 const template = computed<TemplateProps>(() =>
   store.getters.getTemplateById(parseInt(currentId))
 );

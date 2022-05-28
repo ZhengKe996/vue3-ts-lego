@@ -12,10 +12,12 @@ const user: Module<UserProps, GlobalDataProps> = {
   },
   mutations: {
     login(state) {
-      state = { ...state, isLogin: true, userName: "张三" };
+      state.isLogin = true;
+      state.userName = "张三";
     },
     logout(state) {
-      state = { isLogin: false };
+      state.userName = "";
+      state.isLogin = false;
     },
   },
 };

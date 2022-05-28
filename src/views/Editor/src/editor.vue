@@ -9,6 +9,7 @@
               :list="defaultTextTemplates"
               @on-item-click="addItem"
             />
+            <styled-uploader />
           </div>
         </a-layout-sider>
         <a-layout :style="{ padding: '0 24px 24px' }">
@@ -55,7 +56,7 @@ import EditWrapper from "@/components/EditWrapper";
 import { PropsTable } from "@/components/PropsTable";
 import { defaultTextTemplates } from "@/defaultTemplates";
 import { ComponentData } from "@/store/editor";
-
+import StyledUploader from "@/components/StyledUploader";
 const store = useStore<GlobalDataProps>();
 const components = computed(() => store.state.editor.components);
 const currentElement = computed<ComponentData | null>(

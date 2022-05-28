@@ -35,6 +35,7 @@ const router = useRouter();
 const props = defineProps<{ user: UserProps }>();
 const login = () => {
   store.commit("login");
+  message.success("登录成功");
 };
 const logout = () => {
   store.commit("logout");
