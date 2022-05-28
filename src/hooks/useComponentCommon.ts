@@ -7,13 +7,11 @@ export const useComponentCommon = (
   picks: string[]
 ) => {
   const styleProps = computed(() => pick(props, picks));
-
   const handleClick = () => {
     if (props.actionType === "url" && props.url) {
       window.location.href = props.url;
     }
   };
-
   return {
     styleProps,
     handleClick,

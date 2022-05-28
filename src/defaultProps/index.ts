@@ -36,6 +36,9 @@ export interface TextComponentProps extends CommonComponentProps {
   color: string;
   backgroundColor: string;
 }
+export interface ImageComponentProps extends CommonComponentProps {
+  src: string;
+}
 
 export const commonDefaultProps: CommonComponentProps = {
   // actions
@@ -77,6 +80,15 @@ export const textDefaultProps: TextComponentProps = {
   backgroundColor: "",
   ...commonDefaultProps,
 };
+
+export const imageDefaultProps: ImageComponentProps = {
+  src: "test.url",
+  ...commonDefaultProps,
+};
+export const imageStylePropsNames = without(
+  Object.keys(imageDefaultProps),
+  "src"
+);
 
 export const textStylePropNames = without(
   Object.keys(textDefaultProps),

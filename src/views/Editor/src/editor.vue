@@ -9,7 +9,6 @@
               :list="defaultTextTemplates"
               @on-item-click="addItem"
             />
-            <styled-uploader />
           </div>
         </a-layout-sider>
         <a-layout :style="{ padding: '0 24px 24px' }">
@@ -23,7 +22,16 @@
                 :active="component.id === (currentElement && currentElement.id)"
                 @set-active="setActice"
               >
-                <l-text :is="component.name" v-bind="component.props" />
+                <l-text
+                  v-if="component.name === 'l-text'"
+                  :is="component.name"
+                  v-bind="component.props"
+                />
+                <l-image
+                  v-if="component.name === 'l-image'"
+                  :is="component.name"
+                  v-bind="component.props"
+                />
               </edit-wrapper>
             </div>
           </a-layout-content>
@@ -51,19 +59,20 @@ import { computed } from "vue";
 import { useStore } from "vuex";
 import { GlobalDataProps } from "@/store";
 import LText from "@/components/LText";
+import LImage from "@/components/LImage";
 import ComponentsList from "@/components/ComponentsList";
 import EditWrapper from "@/components/EditWrapper";
 import { PropsTable } from "@/components/PropsTable";
 import { defaultTextTemplates } from "@/defaultTemplates";
 import { ComponentData } from "@/store/editor";
-import StyledUploader from "@/components/StyledUploader";
 const store = useStore<GlobalDataProps>();
 const components = computed(() => store.state.editor.components);
 const currentElement = computed<ComponentData | null>(
   () => store.getters.getCurrentElement
 );
-const addItem = (props: any) => {
-  store.commit("addComponent", props);
+
+const addItem = (component: any) => {
+  store.commit("addComponent", component);
 };
 const setActice = (id: string) => {
   store.commit("setActice", id);
